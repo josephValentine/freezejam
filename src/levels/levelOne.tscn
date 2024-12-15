@@ -85,3 +85,6 @@ position = Vector2(-998, -479)
 
 [node name="Tree3" parent="Tree6" instance=ExtResource("2_eiu7v")]
 position = Vector2(-454, -1006)
+
+[node name="Player2" parent="." instance=ExtResource("1_uuoxe")]
+position = Vector2(1061, 754)
