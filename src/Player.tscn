@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxsfld8b4brp0"]
+
+[ext_resource type="Texture2D" uid="uid://c2dudtn3vj5r4" path="res://img/eggmansmal2l.png" id="1_bo4aa"]
+[ext_resource type="Script" path="res://src/player.gd" id="1_xg21b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iytdn"]
+radius = 55.3173
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xg21b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bo4aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_iytdn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -200)

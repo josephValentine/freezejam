@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg74w36xy04d4"]
+
+[ext_resource type="PackedScene" uid="uid://dxsfld8b4brp0" path="res://src/Player.tscn" id="1_uuoxe"]
+[ext_resource type="PackedScene" uid="uid://cv5jemqjdrpla" path="res://src/objects/tree.tscn" id="2_eiu7v"]
+
+[node name="LevelOne" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_uuoxe")]
+position = Vector2(908, 737)
+
+[node name="Tree" parent="." instance=ExtResource("2_eiu7v")]
+position = Vector2(624, 530)
+
+[node name="Tree2" parent="." instance=ExtResource("2_eiu7v")]
+position = Vector2(666, 956)
+
+[node name="Tree3" parent="." instance=ExtResource("2_eiu7v")]
+position = Vector2(1210, 429)
+
+[node name="Tree4" parent="." instance=ExtResource("2_eiu7v")]
+position = Vector2(799, -519)
+
+[node name="Tree4" parent="Tree4" instance=ExtResource("2_eiu7v")]
+position = Vector2(323, -1002)
+
+[node name="Tree5" parent="Tree4" instance=ExtResource("2_eiu7v")]
+position = Vector2(365, -576)
+
+[node name="Tree6" parent="Tree4" instance=ExtResource("2_eiu7v")]
+position = Vector2(1107, -1409)
+
+[node name="Tree" parent="Tree4/Tree6" instance=ExtResource("2_eiu7v")]
+position = Vector2(-1040, -905)
+
+[node name="Tree2" parent="Tree4/Tree6" instance=ExtResource("2_eiu7v")]
+position = Vector2(-3068, -2414)
+
+[node name="Tree3" parent="Tree4/Tree6" instance=ExtResource("2_eiu7v")]
+position = Vector2(-1463, -1582)
+
+[node name="Tree7" parent="Tree4" instance=ExtResource("2_eiu7v")]
+position = Vector2(799, -519)
+
+[node name="Tree4" parent="Tree4/Tree7" instance=ExtResource("2_eiu7v")]
+position = Vector2(359, -3938)
+
+[node name="Tree5" parent="Tree4/Tree7" instance=ExtResource("2_eiu7v")]
+position = Vector2(-554, -3080)
+
+[node name="Tree6" parent="Tree4/Tree7" instance=ExtResource("2_eiu7v")]
+position = Vector2(-136, -4670)
+
+[node name="Tree" parent="Tree4/Tree7/Tree6" instance=ExtResource("2_eiu7v")]
+position = Vector2(-914, -76)
+
+[node name="Tree2" parent="Tree4/Tree7/Tree6" instance=ExtResource("2_eiu7v")]
+position = Vector2(-618, -2432)
+
+[node name="Tree3" parent="Tree4/Tree7/Tree6" instance=ExtResource("2_eiu7v")]
+position = Vector2(-1463, -1582)
+
+[node name="Tree8" parent="Tree4" instance=ExtResource("2_eiu7v")]
+position = Vector2(1107, -1409)
+
+[node name="Tree" parent="Tree4/Tree8" instance=ExtResource("2_eiu7v")]
+position = Vector2(-969, -3075)
+
+[node name="Tree2" parent="Tree4/Tree8" instance=ExtResource("2_eiu7v")]
+position = Vector2(-998, -479)
+
+[node name="Tree3" parent="Tree4/Tree8" instance=ExtResource("2_eiu7v")]
+position = Vector2(-1463, -1582)
+
+[node name="Tree5" parent="." instance=ExtResource("2_eiu7v")]
+position = Vector2(841, -93)
+
+[node name="Tree6" parent="." instance=ExtResource("2_eiu7v")]
+position = Vector2(909, -1103)
+
+[node name="Tree" parent="Tree6" instance=ExtResource("2_eiu7v")]
+position = Vector2(-969, -3075)
+
+[node name="Tree2" parent="Tree6" instance=ExtResource("2_eiu7v")]
+position = Vector2(-998, -479)
+
+[node name="Tree3" parent="Tree6" instance=ExtResource("2_eiu7v")]
+position = Vector2(-454, -1006)
