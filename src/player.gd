@@ -5,11 +5,13 @@ extends CharacterBody2D
 @export var turn_acceleration = 10
 @export var brake_acceleration = 30
 var brakes = false
+var hasShotty = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity = Vector2.ZERO
+	get_node('../Shotgun').connect('person_touched', Callable(self, '_shotty'))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,7 +30,8 @@ func _process(delta):
 		brakes = true
 	if Input.is_action_pressed("tuck"):
 		velocity.y -= 50
-		
+	if Input.is_action_pressed("shoot"):
+		print('shotty instanciate bullet and velocity', hasShotty)
 	var turn_speed
 	if velocity.y >= -50:
 		turn_speed = max_turn_speed / 3
@@ -40,3 +43,6 @@ func _process(delta):
 	
 
 	move_and_slide()
+	
+func _shotty():
+	hasShotty = true

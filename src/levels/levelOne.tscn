@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg74w36xy04d4"]
+[gd_scene load_steps=4 format=3 uid="uid://bg74w36xy04d4"]
 
 [ext_resource type="PackedScene" uid="uid://dxsfld8b4brp0" path="res://src/Player.tscn" id="1_uuoxe"]
 [ext_resource type="PackedScene" uid="uid://cv5jemqjdrpla" path="res://src/objects/tree.tscn" id="2_eiu7v"]
+[ext_resource type="PackedScene" uid="uid://b5uw2btf4uit5" path="res://src/objects/shotgun.tscn" id="3_axf78"]
 
 [node name="LevelOne" type="Node2D"]
 
@@ -86,5 +87,5 @@ position = Vector2(-998, -479)
 [node name="Tree3" parent="Tree6" instance=ExtResource("2_eiu7v")]
 position = Vector2(-454, -1006)
 
-[node name="Player2" parent="." instance=ExtResource("1_uuoxe")]
-position = Vector2(1061, 754)
+[node name="Shotgun" parent="." instance=ExtResource("3_axf78")]
+position = Vector2(923, 410)
