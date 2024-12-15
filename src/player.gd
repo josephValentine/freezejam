@@ -1,9 +1,9 @@
 extends CharacterBody2D
-@export var max_speed = 800
-@export var acceleration = 3
-@export var max_turn_speed = 350
-@export var turn_acceleration = 10
-@export var brake_acceleration = 30
+@export var max_speed = 500
+@export var acceleration = 1.5
+@export var max_turn_speed = 250
+@export var turn_acceleration = 5
+@export var brake_acceleration = 10
 var brakes = false
 var hasShotty = false
 

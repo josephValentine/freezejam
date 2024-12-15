@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://pxahskrmukkm"]
+
+[ext_resource type="Texture2D" uid="uid://e5fe21ydutf5" path="res://img/log.png" id="1_ttlu4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7pal"]
+radius = 5.0
+
+[node name="Log" type="RigidBody2D"]
+gravity_scale = -0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ttlu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_w7pal")

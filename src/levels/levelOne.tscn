@@ -1,91 +1,108 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg74w36xy04d4"]
+[gd_scene load_steps=6 format=3 uid="uid://bg74w36xy04d4"]
 
 [ext_resource type="PackedScene" uid="uid://dxsfld8b4brp0" path="res://src/Player.tscn" id="1_uuoxe"]
 [ext_resource type="PackedScene" uid="uid://cv5jemqjdrpla" path="res://src/objects/tree.tscn" id="2_eiu7v"]
 [ext_resource type="PackedScene" uid="uid://b5uw2btf4uit5" path="res://src/objects/shotgun.tscn" id="3_axf78"]
+[ext_resource type="PackedScene" uid="uid://pxahskrmukkm" path="res://src/objects/log.tscn" id="4_2eqyk"]
+[ext_resource type="PackedScene" uid="uid://cne5s8rtjib4n" path="res://src/objects/rock.tscn" id="5_ok4jw"]
 
 [node name="LevelOne" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uuoxe")]
 position = Vector2(908, 737)
 
-[node name="Tree" parent="." instance=ExtResource("2_eiu7v")]
-position = Vector2(624, 530)
-
-[node name="Tree2" parent="." instance=ExtResource("2_eiu7v")]
-position = Vector2(666, 956)
-
-[node name="Tree3" parent="." instance=ExtResource("2_eiu7v")]
-position = Vector2(1210, 429)
-
-[node name="Tree4" parent="." instance=ExtResource("2_eiu7v")]
-position = Vector2(799, -519)
-
-[node name="Tree4" parent="Tree4" instance=ExtResource("2_eiu7v")]
-position = Vector2(323, -1002)
-
-[node name="Tree5" parent="Tree4" instance=ExtResource("2_eiu7v")]
-position = Vector2(365, -576)
-
-[node name="Tree6" parent="Tree4" instance=ExtResource("2_eiu7v")]
-position = Vector2(1107, -1409)
-
-[node name="Tree" parent="Tree4/Tree6" instance=ExtResource("2_eiu7v")]
-position = Vector2(-1040, -905)
-
-[node name="Tree2" parent="Tree4/Tree6" instance=ExtResource("2_eiu7v")]
-position = Vector2(-3068, -2414)
-
-[node name="Tree3" parent="Tree4/Tree6" instance=ExtResource("2_eiu7v")]
-position = Vector2(-1463, -1582)
-
-[node name="Tree7" parent="Tree4" instance=ExtResource("2_eiu7v")]
-position = Vector2(799, -519)
-
-[node name="Tree4" parent="Tree4/Tree7" instance=ExtResource("2_eiu7v")]
-position = Vector2(359, -3938)
-
-[node name="Tree5" parent="Tree4/Tree7" instance=ExtResource("2_eiu7v")]
-position = Vector2(-554, -3080)
-
-[node name="Tree6" parent="Tree4/Tree7" instance=ExtResource("2_eiu7v")]
-position = Vector2(-136, -4670)
-
-[node name="Tree" parent="Tree4/Tree7/Tree6" instance=ExtResource("2_eiu7v")]
-position = Vector2(-914, -76)
-
-[node name="Tree2" parent="Tree4/Tree7/Tree6" instance=ExtResource("2_eiu7v")]
-position = Vector2(-618, -2432)
-
-[node name="Tree3" parent="Tree4/Tree7/Tree6" instance=ExtResource("2_eiu7v")]
-position = Vector2(-1463, -1582)
-
-[node name="Tree8" parent="Tree4" instance=ExtResource("2_eiu7v")]
-position = Vector2(1107, -1409)
-
-[node name="Tree" parent="Tree4/Tree8" instance=ExtResource("2_eiu7v")]
-position = Vector2(-969, -3075)
-
-[node name="Tree2" parent="Tree4/Tree8" instance=ExtResource("2_eiu7v")]
-position = Vector2(-998, -479)
-
-[node name="Tree3" parent="Tree4/Tree8" instance=ExtResource("2_eiu7v")]
-position = Vector2(-1463, -1582)
-
-[node name="Tree5" parent="." instance=ExtResource("2_eiu7v")]
-position = Vector2(841, -93)
-
-[node name="Tree6" parent="." instance=ExtResource("2_eiu7v")]
-position = Vector2(909, -1103)
-
-[node name="Tree" parent="Tree6" instance=ExtResource("2_eiu7v")]
-position = Vector2(-969, -3075)
-
-[node name="Tree2" parent="Tree6" instance=ExtResource("2_eiu7v")]
-position = Vector2(-998, -479)
-
-[node name="Tree3" parent="Tree6" instance=ExtResource("2_eiu7v")]
-position = Vector2(-454, -1006)
-
 [node name="Shotgun" parent="." instance=ExtResource("3_axf78")]
 position = Vector2(923, 410)
+scale = Vector2(0.5, 0.5)
+
+[node name="trees" type="Node2D" parent="."]
+
+[node name="Tree" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(767, 606)
+
+[node name="Tree2" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(976, 614)
+
+[node name="Tree3" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(733, 419)
+
+[node name="Tree4" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(868, 500)
+
+[node name="Tree5" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(1036, 393)
+
+[node name="Tree6" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(810, 226)
+
+[node name="Tree7" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(1019, 234)
+
+[node name="Tree8" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(776, 39)
+
+[node name="Tree9" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(911, 120)
+
+[node name="Tree10" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(1079, 13)
+
+[node name="Tree11" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(752, -123)
+
+[node name="Tree12" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(961, -115)
+
+[node name="Tree13" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(718, -310)
+
+[node name="Tree14" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(853, -229)
+
+[node name="Tree15" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(1021, -336)
+
+[node name="Tree16" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(795, -503)
+
+[node name="Tree17" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(1004, -495)
+
+[node name="Tree18" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(761, -690)
+
+[node name="Tree19" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(896, -609)
+
+[node name="Tree20" parent="trees" instance=ExtResource("2_eiu7v")]
+position = Vector2(1064, -716)
+
+[node name="Log" parent="trees" instance=ExtResource("4_2eqyk")]
+position = Vector2(830, 667)
+
+[node name="Log2" parent="trees" instance=ExtResource("4_2eqyk")]
+position = Vector2(875, 554)
+
+[node name="Log3" parent="trees" instance=ExtResource("4_2eqyk")]
+position = Vector2(956, 465)
+
+[node name="Log4" parent="trees" instance=ExtResource("4_2eqyk")]
+position = Vector2(997, 766)
+
+[node name="Log5" parent="trees" instance=ExtResource("4_2eqyk")]
+position = Vector2(812, 287)
+
+[node name="Tree21" parent="trees" instance=ExtResource("5_ok4jw")]
+position = Vector2(902, 609)
+
+[node name="Tree22" parent="trees" instance=ExtResource("5_ok4jw")]
+position = Vector2(774, 481)
+
+[node name="Tree23" parent="trees" instance=ExtResource("5_ok4jw")]
+position = Vector2(916, 284)
+
+[node name="Tree24" parent="trees" instance=ExtResource("5_ok4jw")]
+position = Vector2(833, 63)
+
+[node name="Tree25" parent="trees" instance=ExtResource("5_ok4jw")]
+position = Vector2(998, -216)
