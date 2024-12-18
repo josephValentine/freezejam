@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dxsfld8b4brp0" path="res://src/Player.tscn" id="1_uuoxe"]
 [ext_resource type="PackedScene" uid="uid://cv5jemqjdrpla" path="res://src/objects/tree.tscn" id="2_eiu7v"]
 [ext_resource type="PackedScene" uid="uid://b5uw2btf4uit5" path="res://src/objects/shotgun.tscn" id="3_axf78"]
-[ext_resource type="PackedScene" uid="uid://pxahskrmukkm" path="res://src/objects/log.tscn" id="4_2eqyk"]
-[ext_resource type="PackedScene" uid="uid://cne5s8rtjib4n" path="res://src/objects/rock.tscn" id="5_ok4jw"]
+[ext_resource type="PackedScene" path="res://src/objects/log.tscn" id="4_2eqyk"]
+[ext_resource type="PackedScene" path="res://src/objects/rock.tscn" id="5_ok4jw"]
 
 [node name="LevelOne" type="Node2D"]
 

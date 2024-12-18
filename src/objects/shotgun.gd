@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print('picked up gun', body)
-	emit_signal('person_touched')
-	queue_free()
+	if body.name == "Player":  # Assuming your player node is named "Player"
+		print('picked up gun', body)
+		emit_signal('person_touched')
+		queue_free()
