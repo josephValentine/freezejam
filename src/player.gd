@@ -13,6 +13,11 @@ var damage_multiplier = 0.15  # How much damage per unit of speed
 var invulnerable = false
 var invulnerability_time = 0.5 
 @onready var invulnerability_timer = Timer.new()
+# @export var shotty_bullet_scene: PackedScene  
+var shotty_bullet_scene = preload("res://src/objects/shotty_bullet.tscn")
+var shoot_cooldown = 0.0
+var can_shoot = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,8 +57,8 @@ func _process(delta):
 		#brakes = true
 	if Input.is_action_pressed("tuck"):
 		velocity.y -= 50
-	if Input.is_action_pressed("shoot"):
-		print('shotty instanciate bullet and velocity', hasShotty)
+	if Input.is_action_pressed("shoot") and hasShotty and can_shoot:
+		shoot()
 	var turn_speed
 	if velocity.y >= -20:
 		turn_speed = max_turn_speed / 8
@@ -67,6 +72,11 @@ func _process(delta):
 	move_and_slide()
 	handle_collisions()
 	
+	if shoot_cooldown > 0:
+		shoot_cooldown -= delta
+		if shoot_cooldown <= 0:
+			can_shoot = true
+
 func _shotty():
 	hasShotty = true
 
@@ -90,3 +100,12 @@ func take_damage(damage):
 
 func _on_invulnerability_timer_timeout():
 	invulnerable = false
+
+func shoot():
+	var bullet = shotty_bullet_scene.instantiate()
+	get_tree().current_scene.add_child(bullet)
+	bullet.global_position = global_position
+	
+	# Add cooldown between shots
+	shoot_cooldown = 0.5  # Adjust this value to control fire rate
+	can_shoot = false

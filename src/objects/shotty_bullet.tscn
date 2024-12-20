@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvgxey1lx7d3o"]
+[gd_scene load_steps=4 format=3 uid="uid://dg2ymfsnhqwmo"]
 
 [ext_resource type="Texture2D" uid="uid://dm7ogm60sohny" path="res://img/fire.png" id="1_7iq07"]
 [ext_resource type="Script" path="res://src/objects/shotty_bullet.gd" id="1_urygg"]
