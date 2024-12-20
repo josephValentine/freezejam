@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://sfmtf5u1aoja" path="res://img/tree.png" id="1_ni1ie"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y7b0n"]
-radius = 9.0
+radius = 4.0
 height = 40.0
 
 [node name="Tree" type="Node2D"]
