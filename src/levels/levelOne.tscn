@@ -25,7 +25,6 @@ color = Color(0.729412, 0.823529, 0.898039, 1)
 
 [node name="Shotgun" parent="." instance=ExtResource("3_axf78")]
 position = Vector2(-127, -369)
-scale = Vector2(0.5, 0.5)
 
 [node name="Pistol" parent="." instance=ExtResource("8_g0d1e")]
 position = Vector2(4, -288)
@@ -60,4 +59,4 @@ script = ExtResource("6_7fssm")
 player = NodePath("../../../Player")
 
 [node name="Follower" parent="." instance=ExtResource("7_p83c1")]
-position = Vector2(-13, 206)
+position = Vector2(9, 386)

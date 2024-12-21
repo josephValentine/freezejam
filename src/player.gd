@@ -55,7 +55,8 @@ var weapons = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity = Vector2.ZERO
-	
+	current_weapon = "shotgun"
+
 	# Check for each weapon and connect if it exists
 	var shotgun = get_node_or_null('../Shotgun')
 	var pistol = get_node_or_null('../Pistol')
@@ -101,8 +102,8 @@ func _process(delta):
 		pass
 		#velocity.y += brake_acceleration
 		#brakes = true
-	if Input.is_action_pressed("tuck"):
-		velocity.y -= 50
+	#if Input.is_action_pressed("tuck"):
+		#velocity.y -= 50
 	if Input.is_action_pressed("shoot") and current_weapon != "none" and can_shoot:
 		shoot()
 	var turn_speed
@@ -182,7 +183,7 @@ func shoot_shotgun():
 
 		bullet_instance.position = position  # Adjust the gun position node as needed
 
-		var direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+		var direction = Vector2(0, -1)
 		
 		bullet_instance.rotation = direction.angle() + deg_to_rad(angle_offset)
 		bullet_instance.add_to_group("bullets")  # Add bullets to a group for easy management
@@ -197,7 +198,7 @@ func shoot_pistol():
 	var bullet_instance = pistol_bullet_scene.instantiate()
 	bullet_instance.damage_values = weapons["pistol"]["damage"]
 	bullet_instance.position = position
-	var direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+	var direction = Vector2(0, -1)
 	bullet_instance.rotation = direction.angle()
 	bullet_instance.add_to_group("bullets")
 	get_parent().add_child(bullet_instance)
@@ -208,7 +209,7 @@ func shoot_raygun():
 	var bullet_instance = raygun_bullet_scene.instantiate()
 	bullet_instance.damage_values = weapons["raygun"]["damage"]
 	bullet_instance.position = position
-	var direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+	var direction = Vector2(0, -1)
 	bullet_instance.rotation = direction.angle()
 	bullet_instance.add_to_group("bullets")
 	get_parent().add_child(bullet_instance)

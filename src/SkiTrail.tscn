@@ -1,17 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5f8koucy78rt"]
+[gd_scene load_steps=2 format=3 uid="uid://b5f8koucy78rt"]
 
 [ext_resource type="Script" path="res://src/ski_trail.gd" id="1_d132l"]
-
-[sub_resource type="Curve" id="Curve_uw80j"]
-_data = [Vector2(0, 0.839704), 0.0, 0.0, 0, 0, Vector2(0.991215, 0.217756), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [node name="SkiTrail" type="Line2D"]
 top_level = true
 z_index = -5
 points = PackedVector2Array(74, 307, 145, 324, 183, 327)
-width = 3.0
-width_curve = SubResource("Curve_uw80j")
+width = 4.0
 default_color = Color(0.290196, 0.431373, 0.607843, 1)
 joint_mode = 2
 script = ExtResource("1_d132l")

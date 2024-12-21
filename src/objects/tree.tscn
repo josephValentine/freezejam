@@ -12,6 +12,7 @@ radius = 25.0
 height = 66.0
 
 [node name="Tree" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_q0dfx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
