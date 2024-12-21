@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://pxahskrmukkm"]
+[gd_scene load_steps=5 format=3 uid="uid://ckrg8nlsmkga"]
 
 [ext_resource type="Texture2D" uid="uid://e5fe21ydutf5" path="res://img/log.png" id="1_ttlu4"]
+[ext_resource type="Script" path="res://src/objects/log.gd" id="1_uuq2t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7pal"]
 radius = 5.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sffmf"]
+radius = 7.0
+height = 36.0
+
 [node name="Log" type="RigidBody2D"]
 gravity_scale = -0.1
+script = ExtResource("1_uuq2t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ttlu4")
@@ -14,3 +20,9 @@ texture = ExtResource("1_ttlu4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_w7pal")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sffmf")

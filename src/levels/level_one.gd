@@ -83,7 +83,7 @@ func _delete_chunk_contents(chunk_coord: Vector2):
 			obj.queue_free()
 
 func _calculate_items_for_dist(dist: float) -> int:
-	var min_items := 50
+	var min_items := 100
 	var max_items := 200
 	var max_dist := 25000.0
 	

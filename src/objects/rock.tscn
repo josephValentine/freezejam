@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cne5s8rtjib4n"]
+[gd_scene load_steps=5 format=3 uid="uid://dr31cmqjyvbex"]
 
+[ext_resource type="Script" path="res://src/objects/rock.gd" id="1_i5mg7"]
 [ext_resource type="Texture2D" uid="uid://cqx2b110bmx2i" path="res://img/rock.png" id="1_nfcfk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y7b0n"]
 radius = 12.0
 height = 24.0
 
-[node name="Tree" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ly8pd"]
+radius = 15.0
+height = 34.0
+
+[node name="Rock" type="Node2D"]
+script = ExtResource("1_i5mg7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nfcfk")
@@ -16,3 +22,10 @@ texture = ExtResource("1_nfcfk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_y7b0n")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_ly8pd")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

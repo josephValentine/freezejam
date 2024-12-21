@@ -1,6 +1,6 @@
 extends Node2D
 
-var health = 50  # Starting health of the tree
+var health = 250
 
 func take_damage(damage_amount):
 	health -= damage_amount
