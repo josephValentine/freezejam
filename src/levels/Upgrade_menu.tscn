@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw4r57img7wpc"]
+
+[ext_resource type="Script" path="res://src/levels/upgrade_menu.gd" id="1_xp4ui"]
+
+[node name="UpgradeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xp4ui")
+
+[node name="something" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 36
+text = "upgarde something"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 474.0
+offset_right = 413.0
+offset_bottom = 539.0
+theme_override_font_sizes/font_size = 41
+text = "Start"

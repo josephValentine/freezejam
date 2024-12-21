@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7tjygv50siar"]
 
-[ext_resource type="Texture2D" uid="uid://c2dudtn3vj5r4" path="res://img/eggmansmal2l.png" id="1_ekuo4"]
 [ext_resource type="Script" path="res://src/follower.gd" id="1_w405q"]
+[ext_resource type="Texture2D" uid="uid://drgmdxrs6vskt" path="res://img/snowball.png" id="2_f45oy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnc1y"]
 radius = 48.2701
@@ -12,7 +12,7 @@ collision_mask = 2
 script = ExtResource("1_w405q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ekuo4")
+texture = ExtResource("2_f45oy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cnc1y")

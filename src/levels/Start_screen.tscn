@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm35yopuqviip"]
+
+[ext_resource type="Script" path="res://src/levels/start_screen.gd" id="1_7jsaq"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7jsaq")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="ShopButton" type="Button" parent="."]
+offset_left = 2.0
+offset_top = 84.0
+offset_right = 107.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 40
+text = "Shop"

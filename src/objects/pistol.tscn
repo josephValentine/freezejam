@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://jiv3e1if3efq"]
+[gd_scene load_steps=4 format=3 uid="uid://c2d3owaoxx431"]
 
 [ext_resource type="Script" path="res://src/objects/pistol.gd" id="1_v1q6v"]
-[ext_resource type="Texture2D" uid="uid://dcqoh2felnp1j" path="res://img/shotty.png" id="2_4jiqd"]
+[ext_resource type="Texture2D" uid="uid://dk7s60pj4l32e" path="res://img/pistol.png" id="2_vqrbx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ixx4t"]
 radius = 23.0
@@ -11,7 +11,7 @@ height = 146.0
 script = ExtResource("1_v1q6v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_4jiqd")
+texture = ExtResource("2_vqrbx")
 
 [node name="Area2D" type="Area2D" parent="."]
 

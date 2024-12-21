@@ -7,11 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://bd17ryvnuw3tf" path="res://img/hbarfront.png" id="5_mes5o"]
 [ext_resource type="Script" path="res://src/levels/texture_progress_bar.gd" id="6_7fssm"]
 [ext_resource type="PackedScene" uid="uid://b7tjygv50siar" path="res://src/Follower.tscn" id="7_p83c1"]
-[ext_resource type="PackedScene" uid="uid://jiv3e1if3efq" path="res://src/objects/pistol.tscn" id="8_g0d1e"]
-[ext_resource type="PackedScene" uid="uid://cgtu77vk1sa22" path="res://src/objects/raygun.tscn" id="9_71o2c"]
+[ext_resource type="PackedScene" uid="uid://c2d3owaoxx431" path="res://src/objects/pistol.tscn" id="8_g0d1e"]
+[ext_resource type="PackedScene" uid="uid://er6oucy7cs81" path="res://src/objects/raygun.tscn" id="9_71o2c"]
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_nue8s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.729412, 0.823529, 0.898039, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_uuoxe")]
 
