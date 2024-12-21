@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgtu77vk1sa22"]
+
+[ext_resource type="Script" path="res://src/objects/raygun.gd" id="1_v0g1y"]
+[ext_resource type="Texture2D" uid="uid://dcqoh2felnp1j" path="res://img/shotty.png" id="2_w76mu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ixx4t"]
+radius = 23.0
+height = 146.0
+
+[node name="raygun" type="Node2D"]
+script = ExtResource("1_v0g1y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w76mu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ixx4t")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

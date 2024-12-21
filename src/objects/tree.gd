@@ -18,6 +18,11 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == 'ShottyBulletArea2D':
-		take_damage(50)
-		area.get_parent().queue_free()
+	# if area.name == 'ShottyBulletArea2D':
+	# 	take_damage(50)
+	# 	area.get_parent().queue_free()
+	if area.get_parent().is_in_group("bullets"):
+		var bullet = area.get_parent()
+		var damage = bullet.damage_values["tree"]  
+		take_damage(damage)
+		bullet.queue_free()

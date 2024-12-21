@@ -31,6 +31,13 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
+	
+	# Create laser visual
+	var laser_visual = ColorRect.new()
+	laser_visual.color = Color(1, 0, 0, 0.8)  # Bright red, slightly transparent
+	laser_visual.size = Vector2(30, 2)  # Long and thin
+	laser_visual.position = Vector2(-15, -1)  # Center it
+	add_child(laser_visual)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

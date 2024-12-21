@@ -15,15 +15,61 @@ var invulnerability_time = 0.5
 @onready var invulnerability_timer = Timer.new()
 # @export var shotty_bullet_scene: PackedScene  
 var shotty_bullet_scene = preload("res://src/objects/shotty_bullet.tscn")
+var pistol_bullet_scene = preload("res://src/objects/pistol_bullet.tscn")
+var raygun_bullet_scene = preload("res://src/objects/raygun_bullet.tscn")
 var shoot_cooldown = 0.0
 var can_shoot = true
+var current_weapon = "none"  # Tracks which weapon is currently held
+var weapons = {
+	"none": null,
+	"shotgun": {
+		"shoot_func": "shoot_shotgun",
+		"cooldown": 0.5,
+		"damage": {
+			"tree": 50,
+			"rock": 30,
+			"log": 40
+		}
+	},
+	"pistol": {
+		"shoot_func": "shoot_pistol",
+		"cooldown": 0.3,
+		"damage": {
+			"tree": 20,
+			"rock": 15,
+			"log": 25
+		}
+	},
+	"raygun": {
+		"shoot_func": "shoot_raygun",
+		"cooldown": 0.4,
+		"damage": {
+			"tree": 35,
+			"rock": 45,
+			"log": 35
+		}
+	}
+}
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity = Vector2.ZERO
-	get_node('../Shotgun').connect('person_touched', Callable(self, '_shotty'))
-
+	
+	# Check for each weapon and connect if it exists
+	var shotgun = get_node_or_null('../Shotgun')
+	var pistol = get_node_or_null('../Pistol')
+	var raygun = get_node_or_null('../Raygun')
+	
+	print("Found weapons - Shotgun: ", shotgun != null, " Pistol: ", pistol != null, " Raygun: ", raygun != null)
+	
+	if shotgun:
+		shotgun.connect('person_touched', Callable(self, '_shotty'))
+	if pistol:
+		pistol.connect('person_touched', Callable(self, '_pistol'))
+	if raygun:
+		raygun.connect('person_touched', Callable(self, '_raygun'))
+	
 	 # Setup ski trail
 	var scn = preload("res://src/SkiTrail.tscn")
 	var left_trail = scn.instantiate()
@@ -57,8 +103,8 @@ func _process(delta):
 		#brakes = true
 	if Input.is_action_pressed("tuck"):
 		velocity.y -= 50
-	if Input.is_action_pressed("shoot") and hasShotty and can_shoot:
-		shoot_shotgun()
+	if Input.is_action_pressed("shoot") and current_weapon != "none" and can_shoot:
+		shoot()
 	var turn_speed
 	if velocity.y >= -20:
 		turn_speed = max_turn_speed / 8
@@ -78,7 +124,17 @@ func _process(delta):
 			can_shoot = true
 
 func _shotty():
+	print("Shotgun picked up!")
 	hasShotty = true
+	current_weapon = "shotgun"
+
+func _pistol():
+	print("Pistol picked up!")
+	current_weapon = "pistol"
+
+func _raygun():
+	print("Raygun picked up!")
+	current_weapon = "raygun"
 
 func handle_collisions():
 	if invulnerable:
@@ -100,37 +156,23 @@ func take_damage(damage):
 func _on_invulnerability_timer_timeout():
 	invulnerable = false
 
-# Removing or properly commenting out the old shoot function
-# The following is the old implementation, kept as reference
-"""
 func shoot():
-	var num_bullets = 12
-	var max_spread = 45  # Total spread angle for the cone
-	
-	for i in num_bullets:
-		var bullet = shotty_bullet_scene.instantiate()
-		get_tree().current_scene.add_child(bullet)
-		
-		# Start all bullets from almost the same point
-		var tiny_offset = Vector2(randf_range(-1, 1), randf_range(-1, 1))
-		bullet.global_position = global_position + tiny_offset
-		
-		# Random angle within the cone
-		var random_spread = randf_range(-max_spread/2, max_spread/2)
-		bullet.spread_angle = deg_to_rad(random_spread)
-		
-	shoot_cooldown = 0.5
-	can_shoot = false
-"""
+	print("inside main shooting")
+	if current_weapon in weapons:
+		var weapon = weapons[current_weapon]
+		call(weapon["shoot_func"])
+		shoot_cooldown = weapon["cooldown"]
+		can_shoot = false
 
 func shoot_shotgun():
+	print("shooting shotgun")
 	var num_bullets = 5  # Adjust the number of bullets in the spread
 	var spread_angle = 25  # Adjust the spread angle in degrees
 
 	for i in range(num_bullets):
 		var bullet_instance
 		bullet_instance = shotty_bullet_scene.instantiate()
-		bullet_instance.name = bullet_instance.name + "bullet"
+		bullet_instance.damage_values = weapons["shotgun"]["damage"]
 		var angle_offset = randf_range(-spread_angle / 2, spread_angle / 2)  # Random offset within the spread angle
 
 		bullet_instance.position = position  # Adjust the gun position node as needed
@@ -141,6 +183,28 @@ func shoot_shotgun():
 		bullet_instance.add_to_group("bullets")  # Add bullets to a group for easy management
 		get_parent().add_child(bullet_instance)
 		bullet_instance.set("rotation", direction.angle() + deg_to_rad(angle_offset))  # Set the direction of the bullet
-
 	shoot_cooldown = 0.5
 	can_shoot = false
+
+
+func shoot_pistol():
+	print("shooting pistol")
+	var bullet_instance = pistol_bullet_scene.instantiate()
+	bullet_instance.damage_values = weapons["pistol"]["damage"]
+	bullet_instance.position = position
+	var direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+	bullet_instance.rotation = direction.angle()
+	bullet_instance.add_to_group("bullets")
+	get_parent().add_child(bullet_instance)
+	bullet_instance.set("rotation", direction.angle())
+
+func shoot_raygun():
+	print("shooting raygun")
+	var bullet_instance = raygun_bullet_scene.instantiate()
+	bullet_instance.damage_values = weapons["raygun"]["damage"]
+	bullet_instance.position = position
+	var direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+	bullet_instance.rotation = direction.angle()
+	bullet_instance.add_to_group("bullets")
+	get_parent().add_child(bullet_instance)
+	bullet_instance.set("rotation", direction.angle())

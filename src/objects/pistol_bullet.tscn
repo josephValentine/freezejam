@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://n2k3ybyg7hsk"]
+
+[ext_resource type="Script" path="res://src/objects/shotty_bullet.gd" id="1_gek5i"]
+[ext_resource type="Texture2D" uid="uid://dm7ogm60sohny" path="res://img/fire.png" id="2_5fbru"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylbj8"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_48fry"]
+radius = 5.0
+
+[node name="pistolBullet" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_gek5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5fbru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ylbj8")
+
+[node name="ShottyBulletArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShottyBulletArea2D"]
+shape = SubResource("CircleShape2D_48fry")
+
+[connection signal="area_entered" from="ShottyBulletArea2D" to="." method="_on_area_2d_area_entered"]
