@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var health = 50  # Starting health of the tree
+var health = 150  # Starting health of the tree
 
 func take_damage(damage_amount):
 	health -= damage_amount
@@ -10,7 +10,6 @@ func take_damage(damage_amount):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("im a log and im here")
 	pass # Replace with function body.
 
 
@@ -18,7 +17,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-#func _on_area_2d_area_entered(area: Area2D) -> void:
-	#if area.name == 'ShottyBulletArea2D':
-		#take_damage(50)
-		#area.get_parent().queue_free()
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.get_parent().is_in_group("bullets"):
+		var bullet = area.get_parent()
+		var damage = bullet.damage_values["tree"]  
+		take_damage(damage)
+		bullet.queue_free()
+
+
+func _on_timer_timeout():
+	queue_free()

@@ -5,6 +5,9 @@ extends Control
 func _ready():
 	print("in upgrade menu")
 	$StartButton.pressed.connect(_on_start_pressed)
+	
+func _process(delta):
+	$CoinsLabel.text = "Coins: " + str(Globals.coins)
 
 
 func _on_start_pressed():

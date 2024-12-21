@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxsfld8b4brp0"]
+[gd_scene load_steps=5 format=3 uid="uid://dxsfld8b4brp0"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_xg21b"]
 [ext_resource type="Texture2D" uid="uid://b57yh1087msit" path="res://img/enemy.png" id="2_247uc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iytdn"]
 radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6padl"]
+radius = 26.9258
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
@@ -20,3 +23,8 @@ shape = SubResource("CircleShape2D_iytdn")
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -200)
 zoom = Vector2(2, 2)
+
+[node name="PlayerArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+shape = SubResource("CircleShape2D_6padl")
