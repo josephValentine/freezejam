@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv5jemqjdrpla"]
+[gd_scene load_steps=5 format=3 uid="uid://cv5jemqjdrpla"]
 
 [ext_resource type="Texture2D" uid="uid://sfmtf5u1aoja" path="res://img/tree.png" id="1_ni1ie"]
+[ext_resource type="Script" path="res://src/objects/tree.gd" id="1_q0dfx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y7b0n"]
 radius = 4.0
 height = 40.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj3jb"]
+radius = 25.0
+height = 66.0
+
 [node name="Tree" type="Node2D"]
+script = ExtResource("1_q0dfx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ni1ie")
@@ -16,3 +22,10 @@ texture = ExtResource("1_ni1ie")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-1, 9)
 shape = SubResource("CapsuleShape2D_y7b0n")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_tj3jb")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

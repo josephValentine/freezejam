@@ -1,24 +1,22 @@
 extends RigidBody2D
 
 var velocity = Vector2.ZERO
-
+var spread_angle = 0.0
+var bullet_number = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Disable collision with player
+	apply_impulse(Vector2.from_angle(rotation) * 2000)
+	# Disable collision with player and other bullets
 	set_collision_mask_value(1, false)
 	set_collision_layer_value(1, false)
+	set_collision_layer_value(2, false)  # Disable collision between bullets
+	set_collision_mask_value(2, false)   # Disable collision between bullets
 	
-	# Disable gravity and lock rotation
-	gravity_scale = 0.0
-	lock_rotation = true
-	linear_damp = 0.0  # Prevents slowdown
-	
-	# Set bullet velocity
-	var bullet_speed = 800
-	var bullet_velocity = Vector2.UP.rotated(rotation) * bullet_speed
-	bullet_velocity += velocity
-	linear_velocity = bullet_velocity
+	# var direction = Vector2(sin(spread_angle), -cos(spread_angle))
+	# var bullet_velocity = direction * bullet_speed
+	# bullet_velocity += velocity
+	# linear_velocity = bullet_velocity
 	
 	# Create and start a timer to destroy the bullet
 	var timer = Timer.new()

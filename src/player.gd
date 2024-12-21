@@ -58,7 +58,7 @@ func _process(delta):
 	if Input.is_action_pressed("tuck"):
 		velocity.y -= 50
 	if Input.is_action_pressed("shoot") and hasShotty and can_shoot:
-		shoot()
+		shoot_shotgun()
 	var turn_speed
 	if velocity.y >= -20:
 		turn_speed = max_turn_speed / 8
@@ -91,7 +91,6 @@ func handle_collisions():
 			if impact_speed > damage_speed_threshold:
 				var damage = (impact_speed - damage_speed_threshold) * damage_multiplier
 				take_damage(damage)
-				print("Collision speed: ", impact_speed, " Damage taken: ", damage, " Health: ", cur_health)
 
 func take_damage(damage):
 	cur_health -= damage
@@ -101,11 +100,47 @@ func take_damage(damage):
 func _on_invulnerability_timer_timeout():
 	invulnerable = false
 
+# Removing or properly commenting out the old shoot function
+# The following is the old implementation, kept as reference
+"""
 func shoot():
-	var bullet = shotty_bullet_scene.instantiate()
-	get_tree().current_scene.add_child(bullet)
-	bullet.global_position = global_position
+	var num_bullets = 12
+	var max_spread = 45  # Total spread angle for the cone
 	
-	# Add cooldown between shots
-	shoot_cooldown = 0.5  # Adjust this value to control fire rate
+	for i in num_bullets:
+		var bullet = shotty_bullet_scene.instantiate()
+		get_tree().current_scene.add_child(bullet)
+		
+		# Start all bullets from almost the same point
+		var tiny_offset = Vector2(randf_range(-1, 1), randf_range(-1, 1))
+		bullet.global_position = global_position + tiny_offset
+		
+		# Random angle within the cone
+		var random_spread = randf_range(-max_spread/2, max_spread/2)
+		bullet.spread_angle = deg_to_rad(random_spread)
+		
+	shoot_cooldown = 0.5
+	can_shoot = false
+"""
+
+func shoot_shotgun():
+	var num_bullets = 5  # Adjust the number of bullets in the spread
+	var spread_angle = 25  # Adjust the spread angle in degrees
+
+	for i in range(num_bullets):
+		var bullet_instance
+		bullet_instance = shotty_bullet_scene.instantiate()
+		bullet_instance.name = bullet_instance.name + "bullet"
+		var angle_offset = randf_range(-spread_angle / 2, spread_angle / 2)  # Random offset within the spread angle
+
+		bullet_instance.position = position  # Adjust the gun position node as needed
+
+		var direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+		
+		bullet_instance.rotation = direction.angle() + deg_to_rad(angle_offset)
+		bullet_instance.add_to_group("bullets")  # Add bullets to a group for easy management
+		get_parent().add_child(bullet_instance)
+		bullet_instance.set("rotation", direction.angle() + deg_to_rad(angle_offset))  # Set the direction of the bullet
+
+	shoot_cooldown = 0.5
 	can_shoot = false
