@@ -152,6 +152,11 @@ func take_damage(damage):
 	cur_health -= damage
 	invulnerable = true
 	invulnerability_timer.start(invulnerability_time)
+	if cur_health <= 0:
+		print("die")
+		if get_tree() != null:
+			get_tree().change_scene_to_file("res://src/levels/Start_screen.tscn")  # Adjust path as needed
+
 
 func _on_invulnerability_timer_timeout():
 	invulnerable = false
